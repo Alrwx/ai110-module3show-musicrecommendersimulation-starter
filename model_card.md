@@ -2,13 +2,13 @@
 
 ## 1. Model Name
 
-**VibeFinder 1.0**
+Model
 
 ---
 
 ## 2. Intended Use
 
-VibeFinder is a classroom demonstration of content-based music recommendation. It suggests the top 5 songs from a small catalog based on a user's stated genre, mood, and energy preferences. It is designed for educational exploration of how recommendation algorithms work, not for production use with real listeners.
+It suggests the top 5 songs from a small catalog based on a user's stated genre, mood, and energy preferences. It is designed for educational exploration of how recommendation algorithms work, not for production use with real listeners.
 
 The system assumes each user has a single favorite genre, a single preferred mood, and one target energy level. It is not designed for users with complex or multi-genre tastes.
 
@@ -16,7 +16,7 @@ The system assumes each user has a single favorite genre, a single preferred moo
 
 ## 3. How the Model Works
 
-For every song in the catalog, VibeFinder adds up points based on how well the song matches the user's profile. A matching genre is worth 2 points, a matching mood is worth 1 point, and the energy score rewards songs whose energy level is close to what the user asked for (up to 1 point — the closer the better). There is also a small 0.3-point bonus for songs with high danceability. The system then ranks all songs by total score and shows the top 5 with an explanation of exactly which rules contributed.
+For every song in the catalog, the model adds up points based on how well the song matches the user's profile. A matching genre is worth 2 points, a matching mood is worth 1 point, and the energy score rewards songs whose energy level is close to what the user asked for (up to 1 point — the closer the better). There is also a small 0.3-point bonus for songs with high danceability. The system then ranks all songs by total score and shows the top 5 with an explanation of exactly which rules contributed.
 
 Think of it like a judge at a talent show holding up scorecards: each song gets rated on three or four criteria, the scores are added together, and the highest total wins.
 
@@ -32,7 +32,7 @@ The dataset still skews toward upbeat and electronic styles. Genres like classic
 
 ## 5. Strengths
 
-VibeFinder works well for "clean" profiles where the user's genre, mood, and energy all point in the same direction. For example, a "pop/happy/high-energy" user gets "Sunrise City" at the top, which is exactly what you would expect. The lofi/chill profile correctly surfaces "Midnight Coding" and "Library Rain" ahead of everything else.
+It works well for "clean" profiles where the user's genre, mood, and energy all point in the same direction. For example, a "pop/happy/high-energy" user gets "Sunrise City" at the top, which is exactly what you would expect. The lofi/chill profile correctly surfaces "Midnight Coding" and "Library Rain" ahead of everything else.
 
 The explanations attached to each recommendation make the system transparent — you can see precisely why a song scored the way it did, which is something most real-world recommenders do not offer.
 
@@ -54,7 +54,7 @@ There is no collaborative filtering, so the system cannot learn from patterns ac
 
 ## 7. Evaluation
 
-I tested three user profiles: High-Energy Pop (genre=pop, mood=happy, energy=0.8), Chill Lofi (genre=lofi, mood=chill, energy=0.4), and Deep Intense Rock (genre=rock, mood=intense, energy=0.9). For each, I checked whether the top results intuitively matched what a real person with those preferences would want to hear.
+I tested three user profiles: High-Energy Pop, Chill Lofi, and Deep Intense Rock. For each, I checked whether the top results intuitively matched what a real person with those preferences would want to hear.
 
 I also ran a weight-shift experiment where I halved the genre weight and doubled the energy multiplier. This caused the rankings to shift noticeably — songs that matched on energy moved up even if they were from a different genre. It confirmed that genre weight is the dominant factor in the baseline system.
 
